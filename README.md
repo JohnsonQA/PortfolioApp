@@ -60,8 +60,13 @@ Handles client requests and forwards them to Gunicorn
 Provides additional benefits like load balancing, SSL termination, and caching
 ```
 ## Gunicorn Setup
-```
-> Add the dependency in the requirements.txt gunicorn==23.0.0
-> To run as prod server over dev server use following command
-    # gunicorn app:app &
-```
+
+- Add the dependency in `requirements.txt`:
+  ```txt
+  gunicorn==23.0.0
+  ```
+
+- To run the app using Gunicorn (production server):
+  ```bash
+  gunicorn app:app
+  ```
