@@ -68,5 +68,5 @@ Provides additional benefits like load balancing, SSL termination, and caching
 
 - To run the app using Gunicorn (production server):
   ```bash
-  gunicorn app:app
+  gunicorn app:app &
   ```
