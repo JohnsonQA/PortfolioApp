@@ -68,3 +68,27 @@ python3 app.py
   ```bash
   gunicorn app:app &
   ```
+
+  ## Deploy the app in EC2 
+
+  > - Install git 
+  > - Install nginx
+
+  ```bash
+   sudo yum install git -y
+   git clone <your repo>
+   sudo yum install nginx -y
+  ```
+
+> - Activate virtual Env
+
+> - Add IB rule to allow port 8000 to run the app 
+
+> - Update nginx.conf with the IP or domain name 
+
+> check the curl localhost:800 
+
+> Run the app using ip:8000 
+
+
+
