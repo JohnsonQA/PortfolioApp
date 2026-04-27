@@ -90,5 +90,29 @@ python3 app.py
 
 - Run the app using ip:8000 
 
+> [!NOTE] 
+- Above steps works without nginx 
+
+- With nginx, we have to update the proxy pass location block in the server block in /etc/nginx/nginx.conf file
+
+## How nginx works with Flask App
+
+- Nginx is configured as a reverse proxy to handle incoming HTTP requests on port 80.
+- Requests are forwarded to the backend application using `proxy_pass http://127.0.0.1:8000;`, where the app (Gunicorn/Flask) is running.
+- `127.0.0.1` (localhost) ensures communication happens within the same server, improving security and performance.
+- This architecture decouples the frontend (Nginx) from the backend, enabling better scalability, security (HTTPS), and traffic management.
+
+## Summary
+
+1. Start app → Gunicorn runs on 8000
+2. Start Nginx → listens on 80
+3. User hits website → Nginx forwards to 8000
+
+- Once cloned the git repo and installed nginx and git. Activate virtual env and install dependencies and run bash script. 
+- App get started on 8000 port 
+- Updated the proxy pass in nginx.conf
+- Restart or start the nginx
+
+
 
 
