@@ -114,5 +114,83 @@ python3 app.py
 - Restart or start the nginx
 
 
+## Run Gunicorn as a Service (Systemd)
+
+### Steps
+
+1. **Create service file**
+
+```bash
+sudo nano /etc/systemd/system/gunicorn.service
+```
+
+2. **Add config**
+
+```ini
+[Unit]
+Description=Gunicorn service
+After=network.target
+
+[Service]
+User=ec2-user
+WorkingDirectory=/home/ec2-user/PortfolioApp
+Environment="PATH=/home/ec2-user/PortfolioApp/.venv/bin"
+
+ExecStart=/home/ec2-user/PortfolioApp/.venv/bin/gunicorn \
+          --workers 3 \
+          --bind 127.0.0.1:8000 \
+          app:app
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+3. **Reload systemd**
+
+```bash
+sudo systemctl daemon-reload
+```
+
+4. **Start service**
+
+```bash
+sudo systemctl start gunicorn
+```
+
+5. **Enable on boot**
+
+```bash
+sudo systemctl enable gunicorn
+```
+
+---
+
+### Useful Commands
+
+```bash
+sudo systemctl status gunicorn     # check status
+sudo systemctl restart gunicorn    # restart service
+sudo journalctl -u gunicorn -f     # view logs
+```
+
+---
+
+### Notes
+
+* App runs on `127.0.0.1:8000`
+* Do NOT run Gunicorn manually
+* Ensure port 8000 is free
+
+---
+
+### Flow
+
+```text
+User → Nginx → Gunicorn → Flask App
+```
+
+
 
 
