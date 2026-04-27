@@ -71,8 +71,8 @@ python3 app.py
 
   ## Deploy the app in EC2 
 
-  > - Install git 
-  > - Install nginx
+- Install git 
+- Install nginx
 
   ```bash
    sudo yum install git -y
@@ -80,15 +80,15 @@ python3 app.py
    sudo yum install nginx -y
   ```
 
-> - Activate virtual Env
+- Activate virtual Env in AWS
 
-> - Add IB rule to allow port 8000 to run the app 
+- Add IB rule to allow port 8000 to run the app 
 
-> - Update nginx.conf with the IP or domain name 
+- Update nginx.conf with the IP or domain name 
 
-> check the curl localhost:800 
+- check the curl localhost:800 
 
-> Run the app using ip:8000 
+- Run the app using ip:8000 
 
 
 
