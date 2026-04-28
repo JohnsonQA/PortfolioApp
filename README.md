@@ -95,6 +95,16 @@ python3 app.py
 
 - With nginx, we have to update the proxy pass location block in the server block in /etc/nginx/nginx.conf file
 
+### Steps to point nginx config to flask app
+
+# edit the nginx.conf which is on /etc/nginx/nginx.conf path and add the below config under the server
+
+location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
 ## How nginx works with Flask App
 
 - Nginx is configured as a reverse proxy to handle incoming HTTP requests on port 80.
