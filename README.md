@@ -191,6 +191,28 @@ sudo journalctl -u gunicorn -f     # view logs
 User → Nginx → Gunicorn → Flask App
 ```
 
+### Use Cert Bot to get SSL certs from CAs
+
+```bash
+# install certbot
+sudo yum install certbot python3-certbot-nginx -y
+
+# request certifictate
+sudo certbot --nginx -d static.app.infralabx.space -d www.static.app.infralabx.space
+# Certbot auto-modifies your nginx.conf to add SSL config.
+
+# Certbot creates the certs in the following path /etc/letsencrypt/live/static.app.infralabx.space/
+
+certbot install --cert-name static.demo.livingdevops.org
+# you can autorenew them
+# test auto renevew
+sudo certbot renew --dry-run
+
+# certs are saved at location
+# /etc/letsencrypt/live/yourdomain.com/fullchain.pem   # certificate
+# /etc/letsencrypt/live/yourdomain.com/privkey.pem      # private key
+```
+
 
 
 
