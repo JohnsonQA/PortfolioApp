@@ -201,8 +201,9 @@ sudo yum install certbot python3-certbot-nginx -y
 sudo certbot --nginx -d static.app.infralabx.space -d www.static.app.infralabx.space
 # Certbot auto-modifies your nginx.conf to add SSL config.
 
-# Certbot creates the certs in the following path /etc/letsencrypt/live/static.app.infralabx.space/
+# Certbot creates/saved the certs in the following path /etc/letsencrypt/live/static.app.infralabx.space/
 
+# It just saves the certs but to instal we have to use below command
 certbot install --cert-name static.demo.livingdevops.org
 # you can autorenew them
 # test auto renevew
